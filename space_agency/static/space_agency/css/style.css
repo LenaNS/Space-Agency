@@ -2,6 +2,10 @@
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 52, 43, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+nav .btn{
+    background: rgba(255, 52, 43, 1) ;
+}
+
 h1 {
     font-size: 56px;
 }
@@ -10,10 +14,8 @@ h1 {
     max-width: 745px;
 }
 
-.flex-div {
-    flex-grow: 1;
-    width: 50%;
-    text-align: center;
+.gallery {
+    background: rgba(60, 60, 60, 1);
 }
 
 .square-image {
@@ -26,21 +28,45 @@ h1 {
     object-position: bottom;
 }
 
+.slick-current .square-image {
+    border: 1px solid white;
+}
+
+
+
 .block-img img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 20px;
     object-position: bottom;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.5);
 }
 
-.image img{
+.image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: bottom;
-    border-radius: 20px;   
+    border-radius: 20px;
 }
 
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 40px;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+}
+
+.slider-arrow-prev {
+    left: -25px;
+}
+
+.slider-arrow-next {
+    right: -25px;
+}
 
 @media (min-width: 768px) {
 
@@ -58,20 +84,23 @@ h1 {
 
     .block-imgs img {
         max-width: 200px;
-
     }
 
-    .image img{
+    .image img {
         max-width: 850px;
         max-height: 550px;
     }
-    
-    .slider-fade{
+
+    .slider-fade {
         transform: translateY(25%);
     }
 }
 
 @media (max-width: 768px) {
+
+    .block-slider {
+        overflow: hidden;
+    }
 
     .block-img img {
         width: 100%;
@@ -80,16 +109,19 @@ h1 {
     }
 
     .block-imgs {
-        overflow: hidden;
+        margin-right: 10px;
     }
 
-    .image img{
+    .image img {
         max-width: 330px;
         max-height: 200px;
     }
 
-    .slider-fade{
+    .slider-fade {
         transform: translateY(50%);
+    }
+    .slider-arrow{
+        display: none !important;
     }
 
 }

@@ -13,7 +13,9 @@ $(function () {
         speed: 500,
         asNavFor: ".sync-slider",
         centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        prevArrow: `<img class='slider-arrow-prev slider-arrow' weight='40px' src='${sourcePath + 'img/arrowL.png'}'>`,
+        nextArrow: `<img class='slider-arrow-next slider-arrow' weight='40px' src='${sourcePath + 'img/arrowR.png'}'>`,
     });
     $(".slider-fade").slick({
         infinite: true,
@@ -29,4 +31,3 @@ $('.modal').on('shown.bs.modal', function () {
     $('.slider-fade').slick('setPosition');
     $('.slider-fade').addClass('open');
 });
-

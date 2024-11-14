@@ -1,6 +1,7 @@
 from django.contrib.admin import ModelAdmin, register
 from django.utils.html import mark_safe
 from adminsortable2.admin import SortableAdminMixin
+from easy_thumbnails.files import get_thumbnailer
 from .models import *
 
 
@@ -22,7 +23,13 @@ class ProductAdmin(SortableAdminMixin, ModelAdmin):
         Отображает миниатюру изображения для объекта Slider в административной панели.
         """
         if obj.image:
-            return mark_safe('<img src="%s" width="50" height="50"/>' % (obj.image.url))
+            thumbnailer = get_thumbnailer(obj.image)
+            thumbnail = thumbnailer.get_thumbnail({
+                'size': (50, 50),          
+                'crop': True,           
+                'quality': 90,          
+            })
+            return mark_safe(f'<img src="{thumbnail.url}" /> ')
         return "-"
 
     image_tag.short_description = "Картинка"
